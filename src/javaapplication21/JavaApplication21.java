@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package javaapplication21;
-
 import java.util.Scanner;
 import java.util.Random;
 /**
@@ -44,14 +43,21 @@ public class JavaApplication21 {
             choice2 = sc.nextLine();
                 while(choice2.equalsIgnoreCase("y")){
                     if(w.getGold() < 5){System.out.println("You don't have enough gold");}
-                    else{
+                    if(choice2.equalsIgnoreCase("y")){
                         System.out.print("How many spells would you like to buy?: ");
+                        try{
                         int nextInt = sc.nextInt();
                         amountSpent = nextInt * spellCost;
                         w.setSpells(nextInt);
                         goldAmount = w.getGold();
                         w.setGold(goldAmount - amountSpent);
                         break;
+                        }catch(Exception x){
+                            System.out.println();
+                            System.out.println("Please enter a valid integer");
+                            System.out.println();
+                            sc.next();
+                        }
                     }
                 }
                 System.out.println();
@@ -70,12 +76,19 @@ public class JavaApplication21 {
                    if(e.getGold() < 2){System.out.print("You don't have enough gold.");}
                    else{
                        System.out.print("How many arrows would you like to buy?: ");
+                       try{
                        int nextInt = sc.nextInt();
                        amountSpent = nextInt * arrowCost;
                        e.setArrows(nextInt);
                        goldAmount = e.getGold();
                        e.setGold(goldAmount - amountSpent);
                        break;
+                       }catch(Exception x){
+                            System.out.println();
+                            System.out.println("Please enter a valid integer");
+                            System.out.println();
+                            sc.next();
+                       }
                     }
                    
                }
